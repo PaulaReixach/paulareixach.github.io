@@ -1,0 +1,104 @@
+<!-- About Me Section -->
+<section class="py-16 px-6 bg-gradient-to-br from-white via-rose-50 to-purple-50">
+
+  
+  <div class="max-w-6xl mx-auto">
+    
+    <!-- Title -->
+    <div class="text-center mb-16">
+      <h2
+        class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-rose-400 via-pink-400 to-rose-500 text-transparent bg-clip-text relative inline-block">
+        Sobre Mí
+        <span
+          class="absolute -bottom-2 left-1/2 w-16 h-1 bg-rose-300 rounded-full transform -translate-x-1/2"></span>
+      </h2>
+      <p class="text-lg md:text-xl text-gray-500 mt-4">
+        Conoce mi historia y pasión por la tecnología
+      </p>
+    </div>
+
+    <div
+      class="flex flex-col lg:flex-row items-center gap-12"
+      [appScrollAnimateGroup]="['animate-slide-in-left', 'animate-slide-in-right']"
+      [delayBetween]="200">
+
+    <!-- Profile Image + Stats -->
+    <div class="lg:w-1/3 flex flex-col items-center">
+      <div class="relative group">
+        <!-- Contenedor con hover -->
+        <div
+          class="w-80 h-80 bg-gradient-to-br from-rose-200 via-pink-200 to-purple-200 rounded-3xl flex items-center justify-center shadow-2xl overflow-hidden transform transition duration-500 ease-in-out group-hover:scale-105 group-hover:shadow-rose-300/50 group-hover:shadow-2xl">
+          
+          <img src="assets/paula.jpg" alt="profile-pic"
+            class="w-full h-full object-cover rounded-3xl" />
+        </div>
+
+        <!-- Decorative elements -->
+        <div
+          class="absolute -top-6 -right-6 w-20 h-20 bg-rose-300 rounded-full opacity-40 animate-pulse-soft group-hover:scale-110 transition duration-500 ease-in-out"></div>
+        <div
+          class="absolute -bottom-6 -left-6 w-16 h-16 bg-pink-400 rounded-full opacity-50 animate-float group-hover:scale-110 transition duration-500 ease-in-out"></div>
+        <div
+          class="absolute top-1/2 -right-8 w-12 h-12 bg-purple-300 rounded-full opacity-30 animate-bounce-soft group-hover:scale-110 transition duration-500 ease-in-out"></div>
+      </div>
+
+      <!-- Stats -->
+      <div class="mt-8 grid grid-cols-3 gap-4 text-center">
+        <div *ngFor="let stat of stats; let i = index" 
+            #statEl
+            class="p-4 rounded-xl border border-rose-100 bg-white/60 backdrop-blur-sm shadow-sm transition transform hover:-translate-y-1 hover:shadow-md hover:bg-gradient-to-br hover:from-rose-50 hover:to-pink-50">
+          
+          <h3 class="text-4xl font-bold bg-gradient-to-r from-rose-400 via-pink-400 to-purple-400 text-transparent bg-clip-text">
+            {{ stat.current }}{{ stat.suffix }}
+          </h3>
+          <p class="mt-1 text-xs tracking-wide text-gray-600 uppercase font-medium">{{ stat.label }}</p>
+        </div>
+      </div>
+    </div>
+
+
+      <!-- Description -->
+      <div class="lg:w-2/3">
+        <div class="bg-white rounded-3xl p-10 shadow-xl">
+          <div class="space-y-6 text-lg text-gray-600 leading-relaxed">
+            <p>
+              Soy una <span class="text-rose-600 font-semibold">Ingeniera Informática</span> apasionada por
+              crear soluciones tecnológicas que marquen la diferencia. Con más de 5 años de experiencia en
+              desarrollo web full-stack, he tenido la oportunidad de trabajar en proyectos fascinantes que van
+              desde startups innovadoras hasta grandes corporaciones.
+            </p>
+            <p>
+              Mi enfoque siempre ha sido combinar la <span class="text-purple-600 font-semibold">excelencia
+                técnica</span> con un diseño centrado en el usuario. Creo firmemente que la tecnología debe ser
+              accesible, intuitiva y, sobre todo, útil para las personas que la utilizan.
+            </p>
+            <p>
+              Cuando no estoy programando, me encanta explorar nuevas tecnologías, contribuir a proyectos open
+              source y mentorar a nuevos desarrolladores. La innovación y el aprendizaje continuo son parte
+              fundamental de mi filosofía profesional.
+            </p>
+          </div>
+
+          <!-- Skills Tags -->
+          <div class="mt-8">
+            <h4 class="text-lg font-semibold text-gray-800 mb-4">Especializada en:</h4>
+            <div class="flex flex-wrap gap-3">
+              <span
+                class="px-4 py-2 bg-rose-100 text-rose-500 rounded-full text-sm font-medium shadow-sm hover:bg-rose-200 transition">Angular</span>
+              <span
+                class="px-4 py-2 bg-violet-100 text-violet-500 rounded-full text-sm font-medium shadow-sm hover:bg-violet-200 transition">Node.js
+                & Python</span>
+              <span
+                class="px-4 py-2 bg-emerald-100 text-emerald-500 rounded-full text-sm font-medium shadow-sm hover:bg-emerald-200 transition">UX/UI
+                Design</span>
+              <span
+                class="px-4 py-2 bg-blue-100 text-blue-500 rounded-full text-sm font-medium shadow-sm hover:bg-blue-200 transition">Metodologías
+                Ágiles</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

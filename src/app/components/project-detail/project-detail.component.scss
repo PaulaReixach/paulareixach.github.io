@@ -1,0 +1,12 @@
+.tech-pill {
+  transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease, color .2s ease;
+  box-shadow: 0 0 0 0 rgba(244, 114, 182, 0);
+  color: #be123c; /* rose-700 */
+}
+
+.tech-pill:hover {
+  background-color: #ffe4e6;   /* rose-100 */
+  border-color: #fda4af;       /* rose-300 */
+  color: #ec4899;              /* rose-500 → igual que main content */
+  box-shadow: 0 6px 16px rgba(244, 114, 182, 0.12);
+}
