@@ -3,18 +3,17 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { HostListener } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 
 interface GalleryItem {
   src: string;
-  title?: string;
-  desc?: string;
+  title?: string;   
+  desc?: string;    
+  alt?: string;    
 }
-
 interface ProjectInfo {
   title: string;
   subtitle: string;
-  image: string;
-  image2: string;
   description: string;
   technologies: string[];
   state: string;
@@ -24,7 +23,7 @@ interface ProjectInfo {
   challenges: string[];
   results: string[];
   icon?: string;
-  gallery?: GalleryItem[]; // <= NUEVO: galería opcional
+  gallery: GalleryItem[]; 
   colorClasses: {
     primary: string;
     primaryHover: string;
@@ -37,7 +36,7 @@ interface ProjectInfo {
 @Component({
   selector: 'app-project-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './project-detail.component.html',
   styleUrls: ['./project-detail.component.scss'],
 })
@@ -58,8 +57,6 @@ export class ProjectDetailComponent implements OnInit {
     elasticadoptions: {
       title: 'ElasticAdoptions',
       subtitle: 'Sistema de adopción de animales con búsqueda avanzada (Elasticsearch)',
-      image: 'assets/images/projects/icon_dog.png',
-      image2: 'assets/images/projects/website_elastic.png',
       description:
         'Una plataforma de e-commerce moderna y escalable desarrollada con React y Node.js, que incluye gestión de productos, carrito de compras, procesamiento de pagos y panel de administración',
       technologies: ['Angular', 'Node.js', 'Elasticsearch', 'Docker', 'Figma'],
@@ -82,14 +79,27 @@ export class ProjectDetailComponent implements OnInit {
       results: [
         'Proyecto entregado dentro de plazo con una prueba de concepto funcional: búsqueda y filtrado en tiempos aceptables, índices preparados para escalar y documentación del deploy con Docker. A nivel de equipo validamos el flujo de trabajo con repositorios separados y buenas prácticas Git.',
       ],
-      // Puedes rellenar imágenes reales aquí cuando las tengas:
-      // gallery: [
-      //   { src: 'assets/images/projects/elastic/hero.png', title: 'Vista principal', desc: 'Panel general' },
-      //   { src: 'assets/images/projects/elastic/mobile.png', title: 'Vista móvil', desc: 'Responsive' },
-      //   { src: 'assets/images/projects/elastic/analytics.png', title: 'Analytics', desc: 'Métricas y gráficos' },
-      //   { src: 'assets/images/projects/elastic/profile.png', title: 'Perfil', desc: 'Cuenta de usuario' },
-      //   { src: 'assets/images/projects/elastic/settings.png', title: 'Configuración', desc: 'Preferencias' },
-      // ],
+      icon: 'assets/images/projects/icon_dog.png',
+      gallery: [
+        {
+          src: 'assets/images/projects/website_elastic.png',
+          title: 'Vista principal',
+          desc: 'Resumen visual del proyecto',
+          alt: 'Página principal de ElasticAdoptions'
+        },
+        {
+          src: 'assets/images/projects/figma.png',
+          title: 'Diseño',
+          desc: 'Interfaz de búsqueda y filtrado',
+          alt: 'Captura de pantalla de la interfaz de búsqueda avanzada'
+        },
+        {
+          src: 'assets/images/projects/icon_dog.png',
+          title: 'Logo / Cover',
+          desc: 'Identidad visual',
+          alt: 'Icono de perro usado como cover'
+        },
+      ],
       colorClasses: {
         primary: 'rose-500',
         primaryHover: 'rose-600',
@@ -98,6 +108,63 @@ export class ProjectDetailComponent implements OnInit {
         bg: 'rose-50',
       },
     },
+    pawsupport: {
+        title: 'PawSupport',
+        subtitle: 'Plataforma solidaria para conectar personas con discapacidad y voluntarios',
+        description:
+          'Aplicación web desarrollada como Trabajo de Fin de Grado en Ingeniería Informática. PawSupport permite que personas con alguna discapacidad encuentren voluntarios dispuestos a ayudarles con el cuidado de sus animales de compañía. El proyecto busca fomentar la inclusión, la colaboración y el bienestar animal mediante una plataforma digital intuitiva y accesible.',
+        technologies: ['Angular', 'Node.js', 'PostgreSQL', 'Elasticsearch', 'Firebase', 'Docker'],
+        state: 'Completado',
+        type: 'Desarrollo Full-Stack',
+        duration: '6 meses',
+        features: [
+          'Registro y login diferenciados para voluntarios y personas con discapacidad',
+          'Gestión de perfiles con habilidades, disponibilidad y tipos de animales',
+          'Sistema de mensajería interna y valoraciones mutuas',
+          'Búsqueda y filtrado de usuarios/animales por ubicación, disponibilidad y habilidades',
+          'Recomendaciones personalizadas en base a proximidad',
+          'Subida de imágenes en perfiles y valoraciones',
+          'Interfaz accesible, intuitiva y adaptada a diferentes discapacidades'
+        ],
+        challenges: [
+          'Diseñar un sistema de bases de datos híbrido (relacional y no relacional) para manejar perfiles, imágenes y mensajes de forma eficiente',
+          'Optimizar consultas y búsquedas avanzadas con Elasticsearch para asegurar rapidez en grandes volúmenes de datos',
+          'Aprender y aplicar de manera autónoma nuevas tecnologías como Angular, Firebase y Docker en un entorno real'
+        ],
+        results: [
+          'Entrega de un proyecto funcional y documentado dentro del plazo',
+          'Plataforma que cumple con los objetivos de accesibilidad e inclusión',
+          'Experiencia adquirida en desarrollo full-stack, despliegue con Docker y buenas prácticas con GitHub'
+        ],
+        icon: 'assets/images/projects/icon_dog.png',
+        gallery: [
+          {
+            src: 'assets/images/projects/website_elastic.png',
+            title: 'Vista principal',
+            desc: 'Pantalla de inicio de PawSupport',
+            alt: 'Página principal de la plataforma PawSupport'
+          },
+          {
+            src: 'assets/images/projects/figma.png',
+            title: 'Diseño',
+            desc: 'Prototipo de interfaz accesible y moderna',
+            alt: 'Diseño en Figma de la aplicación PawSupport'
+          },
+          {
+            src: 'assets/images/projects/icon_dog.png',
+            title: 'Logo / Cover',
+            desc: 'Identidad visual del proyecto',
+            alt: 'Icono representativo de PawSupport'
+          }
+        ],
+        colorClasses: {
+          primary: 'rose-500',
+          primaryHover: 'rose-600',
+          light: 'rose-100',
+          text: 'rose-700',
+          bg: 'rose-50',
+        },
+      },
   };
 
   constructor(private route: ActivatedRoute, private location: Location) {}
@@ -119,54 +186,34 @@ export class ProjectDetailComponent implements OnInit {
     }
   }
 
-  /** Garantiza que siempre haya al menos una imagen en la galería y que la "principal" esté la primera */
-  private ensureGalleryDefaults() {
+   private ensureGalleryDefaults() {
     if (!this.projectData) return;
 
-    const gallery = Array.isArray(this.projectData.gallery)
+    let gallery = Array.isArray(this.projectData.gallery)
       ? [...this.projectData.gallery]
       : [];
 
-    // Si no hay nada, construimos con image2 (principal) y/o image (secundaria)
     if (gallery.length === 0) {
-      const fallback: GalleryItem[] = [];
-      if (this.projectData.image2) {
-        fallback.push({
-          src: this.projectData.image2,
-          title: 'Vista principal',
-          desc: 'Resumen visual del proyecto',
-        });
-      }
-      if (this.projectData.image && this.projectData.image !== this.projectData.image2) {
-        fallback.push({
-          src: this.projectData.image,
-          title: 'Imagen secundaria',
-          desc: 'Cover / logo',
-        });
-      }
-      // Si por lo que sea no hay ninguna, no rompemos:
-      if (fallback.length === 0) {
-        fallback.push({
-          src: this.projectData.image || this.projectData.image2 || '',
+      // fallback ultra defensivo: placeholder vacío para no romper bindings
+      gallery = [
+        {
+          src: '',
           title: this.projectData.title || 'Imagen',
           desc: 'Imagen del proyecto',
-        });
-      }
-      this.projectData.gallery = fallback;
-      return;
+          alt: this.projectData.title || 'Imagen del proyecto',
+        },
+      ];
     }
 
-    // Si hay galería pero no tiene una "principal" clara, garantizamos que la primera sea la más relevante.
-    // Aquí podrías implementar tu propia heurística; por ahora respetamos el orden dado.
+    // Puedes aplicar aquí una heurística para decidir “principal” (primera posición)
+    // Por ahora, respetamos el orden dado.
     this.projectData.gallery = gallery;
   }
 
-  // ======= Navegación de galería =======
-
-  get activeImage(): GalleryItem | null {
+get activeImage(): GalleryItem | null {
     if (!this.projectData?.gallery?.length) return null;
     return this.projectData.gallery[this.activeIndex] || null;
-    }
+  }
 
   setActive(i: number): void {
     if (!this.projectData?.gallery?.length) return;
@@ -223,6 +270,26 @@ export class ProjectDetailComponent implements OnInit {
 
   setActiveTab(tab: string): void {
     this.activeTab = tab;
+  }
+
+
+  // ======== Contactar Ahora ========
+
+  showContactForm = false;
+
+  toggleContactForm(): void {
+    this.showContactForm = !this.showContactForm;
+  }
+
+  submitContactForm(form: any): void {
+    if (form.valid) {
+      console.log('Datos del formulario:', form.value);
+
+      // Aquí iría la lógica para enviarte el correo
+      // por ejemplo: llamar a un servicio backend o a EmailJS
+
+      this.showContactForm = false; // cerrar tras enviar
+    }
   }
 
 

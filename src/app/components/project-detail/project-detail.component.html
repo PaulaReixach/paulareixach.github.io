@@ -22,8 +22,10 @@
     <div class="text-center mb-16">
   <div class="relative group w-44 h-44 mx-auto mb-8 rounded-full overflow-hidden shadow-2xl 
               p-[4px] bg-gradient-to-r from-rose-400 via-pink-300 to-purple-400 animate-gradient-x">
-    <img [src]="projectData.image" alt="{{ projectData.title }}"
-         class="w-full h-full object-cover rounded-full transition duration-500 group-hover:scale-110" />
+    <img
+      [src]="projectData.icon || projectData.gallery[0].src || ''"
+      [alt]="projectData.gallery[0].alt || projectData.gallery[0].title || projectData.title || 'Imagen del proyecto'"
+      class="w-full h-full object-cover rounded-full transition duration-500 group-hover:scale-110" />
   </div>
   <h1 class="text-5xl font-bold gradient-text mb-4">{{ projectData.title }}</h1>
   <p class="text-lg text-gray-600">{{ projectData.subtitle }}</p>
@@ -31,6 +33,7 @@
     
     <!-- Project Content -->
     <div class="grid lg:grid-cols-3 gap-8">
+      
       <!-- Main Content -->
     <div class="lg:col-span-2 space-y-8">
 
@@ -127,14 +130,9 @@
 
 
 
-
-
-
-
 <!-- Galería — Moderna, accesible y funcional -->
-<div class="gallery-block relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl 
-            border border-rose-100/40 overflow-hidden transition-shadow hover:shadow-2xl"
-     style="animation-delay:0.4s"
+<div class="gallery-block bg-white/80 backdrop-blur-sm rounded-3xl p-10 shadow-xl 
+            card-hover border border-rose-100/40 relative overflow-hidden animate-card-enter"
      role="region" aria-labelledby="gallery-title"
      tabindex="0"
      (keydown)="onGalleryKeydown($event)">
@@ -150,7 +148,7 @@
     <span class="text-rose-300 opacity-60">•</span>
 
     <!-- contador (opcional) -->
-    <span *ngIf="projectData?.gallery?.length as total"
+    <span *ngIf="projectData.gallery?.length as total"
         class="ml-auto px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-rose-600 border border-rose-200">
         {{ activeIndex + 1 }} / {{ total }}
     </span>
@@ -164,8 +162,8 @@
          aria-label="Abrir imagen en grande">
       <!-- Imagen activa -->
       <img
-        [src]="activeImage?.src || projectData.gallery?.[0]?.src || projectData.image2"
-        [alt]="activeImage?.title || projectData.title || 'Imagen principal'"
+        [src]="activeImage?.src || projectData.gallery[0].src || ''"
+        [alt]="activeImage?.alt || activeImage?.title || projectData.title || 'Imagen principal'"
         class="w-full h-full object-cover"
         loading="eager" decoding="async" />
 
@@ -267,11 +265,6 @@
     Abrir galería
   </button>
 </div>
-
-
-
-
-  
 </div>
 
 
@@ -290,10 +283,10 @@
     <!-- Barra superior -->
     <div class="flex items-center justify-between px-4 py-3 border-b border-rose-100/60 bg-white/80">
       <h4 id="lightbox-title" class="font-semibold text-gray-800 truncate">
-        {{ projectData.gallery?.[lightboxIndex]?.title || 'Imagen' }}
+        {{ projectData.gallery[lightboxIndex].title || 'Imagen' }}
       </h4>
       <div class="flex items-center gap-2 text-sm text-gray-500">
-        {{ (lightboxIndex + 1) }} / {{ projectData.gallery?.length || 0 }}
+        {{ (lightboxIndex + 1) }} / {{ projectData.gallery.length || 0 }}
         <button type="button"
                 class="ml-3 w-9 h-9 grid place-items-center rounded-full bg-white/90 shadow hover:shadow-md focus:outline-none focus:ring-2 focus:ring-rose-300"
                 [attr.aria-label]="'Cerrar'"
@@ -307,8 +300,8 @@
 
     <!-- Imagen -->
     <div class="relative bg-black/05">
-      <img [src]="projectData.gallery?.[lightboxIndex]?.src"
-           [alt]="projectData.gallery?.[lightboxIndex]?.title || 'Imagen ampliada'"
+      <img [src]="projectData.gallery[lightboxIndex].src"
+           [alt]="projectData.gallery[lightboxIndex].title || 'Imagen ampliada'"
            class="max-h-[72vh] w-full object-contain select-none" />
       <!-- Controles -->
       <button type="button"
@@ -330,7 +323,7 @@
     <!-- Pie con descripción -->
     <div class="px-4 py-3 bg-white/80 border-t border-rose-100/60">
       <p class="text-sm text-gray-600">
-        {{ projectData.gallery?.[lightboxIndex]?.desc || ' ' }}
+       {{ projectData.gallery[lightboxIndex].desc || ' ' }}
       </p>
     </div>
   </div>
@@ -425,10 +418,39 @@
             <h3 class="text-2xl font-bold text-gray-800 mb-2">¿Proyecto Similar?</h3>
             <p class="text-gray-600 mb-6 leading-relaxed">¿Te interesa un proyecto parecido? ¡Hablemos!</p>
 
-            <!-- Botón -->
-            <button class="w-full bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white py-3 px-6 rounded-xl font-semibold transition-all duration-300 btn-hover animate-shimmer">
-                Contactar Ahora
+              <!-- Botón -->
+            <button (click)="toggleContactForm()"
+                    class="w-full bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600
+                          text-white py-3 px-6 rounded-xl font-semibold transition-all duration-300
+                          btn-hover animate-shimmer">
+              {{ showContactForm ? 'Cerrar' : 'Contactar Ahora' }}
             </button>
+            
+            <!-- Formulario tipo persiana (siempre en el DOM) -->
+            <div class="contact-accordion" [class.open]="showContactForm" [attr.aria-hidden]="!showContactForm">
+              <div class="contact-accordion__inner">
+                <form #contactForm="ngForm" (ngSubmit)="submitContactForm(contactForm)" novalidate
+                      class="space-y-4 p-6 rounded-2xl border border-rose-100 bg-white/90 shadow-md">
+                  <input type="text" name="nombre" ngModel required
+                        placeholder="Tu nombre"
+                        class="w-full px-4 py-2 rounded-lg border border-rose-200 focus:ring-2 focus:ring-rose-400 focus:outline-none" />
+
+                  <input type="email" name="email" ngModel required
+                        placeholder="Tu email"
+                        class="w-full px-4 py-2 rounded-lg border border-rose-200 focus:ring-2 focus:ring-rose-400 focus:outline-none" />
+
+                  <textarea name="mensaje" ngModel required rows="4"
+                            placeholder="Tu mensaje"
+                            class="w-full px-4 py-2 rounded-lg border border-rose-200 focus:ring-2 focus:ring-rose-400 focus:outline-none"></textarea>
+
+                  <button type="submit"
+                          class="w-full bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600
+                                text-white py-3 px-6 rounded-xl font-semibold transition-all duration-300 btn-hover animate-shimmer">
+                    Enviar
+                  </button>
+                </form>
+              </div>
+            </div>
             </div>
 
 

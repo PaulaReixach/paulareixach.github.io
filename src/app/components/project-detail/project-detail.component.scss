@@ -10,3 +10,27 @@
   color: #ec4899;              /* rose-500 → igual que main content */
   box-shadow: 0 6px 16px rgba(244, 114, 182, 0.12);
 }
+
+/* Contenedor que se colapsa/expande con altura desconocida */
+.contact-accordion {
+  display: grid;
+  grid-template-rows: 0fr;        /* colapsado */
+  transition: grid-template-rows .35s ease, opacity .25s ease, transform .25s ease, margin-top .25s ease;
+  opacity: 0;
+  transform: translateY(-4px);
+  margin-top: 0;                  /* sin separación cuando está cerrado */
+  pointer-events: none;           /* evita foco/tab cuando está cerrado */
+}
+
+.contact-accordion.open {
+  grid-template-rows: 1fr;        /* expandido */
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 1.25rem;            /* ≈ mt-5 -> separación de la tarjeta */
+  pointer-events: auto;
+}
+
+
+.contact-accordion__inner {
+  overflow: hidden;
+}
