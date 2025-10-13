@@ -1,35 +1,33 @@
 .tech-pill {
   transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease, color .2s ease;
   box-shadow: 0 0 0 0 rgba(244, 114, 182, 0);
-  color: #be123c; /* rose-700 */
+  color: #be123c;
 }
 
 .tech-pill:hover {
-  background-color: #ffe4e6;   /* rose-100 */
-  border-color: #fda4af;       /* rose-300 */
-  color: #ec4899;              /* rose-500 → igual que main content */
+  background-color: #ffe4e6;
+  border-color: #fda4af;
+  color: #ec4899;
   box-shadow: 0 6px 16px rgba(244, 114, 182, 0.12);
 }
 
-/* Contenedor que se colapsa/expande con altura desconocida */
 .contact-accordion {
   display: grid;
-  grid-template-rows: 0fr;        /* colapsado */
+  grid-template-rows: 0fr;
   transition: grid-template-rows .35s ease, opacity .25s ease, transform .25s ease, margin-top .25s ease;
   opacity: 0;
   transform: translateY(-4px);
-  margin-top: 0;                  /* sin separación cuando está cerrado */
-  pointer-events: none;           /* evita foco/tab cuando está cerrado */
+  margin-top: 0;
+  pointer-events: none;
 }
 
 .contact-accordion.open {
-  grid-template-rows: 1fr;        /* expandido */
+  grid-template-rows: 1fr;
   opacity: 1;
   transform: translateY(0);
-  margin-top: 1.25rem;            /* ≈ mt-5 -> separación de la tarjeta */
+  margin-top: 1.25rem;
   pointer-events: auto;
 }
-
 
 .contact-accordion__inner {
   overflow: hidden;
