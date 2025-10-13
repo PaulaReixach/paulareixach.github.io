@@ -1,36 +1,107 @@
+<section id="contacto" class="py-24 px-6 bg-gradient-to-b from-white via-rose-50/30 to-white">
+  <div class="max-w-4xl mx-auto text-center" appFadeIn>
 
-    <!-- Contact Section -->
-    <section id="contacto" class="py-16 px-6 bg-white/50">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl font-bold text-gray-800 mb-4">¿Trabajamos Juntos?</h2>
-            <p class="text-xl text-gray-600 mb-8">Estoy disponible para nuevos proyectos y colaboraciones</p>
-            
-            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
-                <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center">
-                        <svg class="w-6 h-6 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <span class="text-gray-700">paularroba.com</span>
-                </div>
-                <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                        <svg class="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                        </svg>
-                    </div>
-                    <span class="text-gray-700">+34 123 456 789</span>
-                </div>
-            </div>
+    <!-- Título -->
+    <h2
+      class="relative inline-block text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-pink-400">
+      Contacto
+      <span class="absolute left-1/2 -bottom-2 w-16 h-[3px] bg-rose-300 rounded-full -translate-x-1/2"></span>
+    </h2>
+    <p class="mt-4 text-lg text-slate-600">
+      ¿Tienes una idea o proyecto? Cuéntame y lo haremos realidad juntos.
+    </p>
 
-            <div class="flex gap-4 justify-center">
-                <button class="bg-rose-500 hover:bg-rose-600 text-white px-8 py-3 rounded-full font-medium transition-colors">
-                    Enviar Mensaje
-                </button>
-                <button class="border-2 border-rose-500 text-rose-500 hover:bg-rose-500 hover:text-white px-8 py-3 rounded-full font-medium transition-colors">
-                    Descargar CV
-                </button>
-            </div>
+    <div
+      class="mt-12 bg-white/90 border border-rose-100 shadow-sm rounded-3xl backdrop-blur-sm p-10 max-w-3xl mx-auto transition hover:shadow-rose-100 hover:-translate-y-0.5 duration-300">
+      <form #form="ngForm" (ngSubmit)="sendEmail(form)" class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left"
+        novalidate>
+
+        <!-- Nombre -->
+        <div class="sm:col-span-1">
+          <label for="name" class="block text-sm font-medium text-slate-700 mb-1">
+            Nombre <span class="text-rose-500">*</span>
+          </label>
+          <input id="name" name="name" [(ngModel)]="contact.name" required
+            class="w-full rounded-xl border border-rose-200 bg-white px-4 py-2
+                    text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-rose-300 transition" placeholder="Tu nombre" />
         </div>
-    </section>
+
+        <!-- Email -->
+        <div class="sm:col-span-1">
+          <label for="email" class="block text-sm font-medium text-slate-700 mb-1">
+            Correo electrónico <span class="text-rose-500">*</span>
+          </label>
+          <input id="email" name="email" type="email" [(ngModel)]="contact.email" required email #emailModel="ngModel"
+            class="w-full rounded-xl border border-rose-200 bg-white px-4 py-2
+                text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-rose-300
+                transition" placeholder="tu@correo.com" />
+
+          <!-- Mensajes de error -->
+          <p *ngIf="form.submitted && emailModel.invalid" class="mt-1 text-xs text-rose-600">
+            {{ emailError(emailModel) }}
+          </p>
+        </div>
+
+        <!-- Mensaje -->
+        <div class="sm:col-span-2">
+          <label for="message" class="block text-sm font-medium text-slate-700 mb-1">
+            Mensaje <span class="text-rose-500">*</span>
+          </label>
+          <textarea id="message" name="message" rows="5" [(ngModel)]="contact.message" required
+            class="w-full rounded-xl border border-rose-200 bg-white px-4 py-2 focus:outline-none focus:ring-2 focus:ring-rose-300 text-slate-800 placeholder-slate-400"></textarea>
+        </div>
+
+        <!-- Botones -->
+        <div class="sm:col-span-2 flex flex-wrap justify-center gap-4 mt-4">
+          <button type="submit" [disabled]="form.invalid || loading" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full
+                    bg-gradient-to-r from-rose-400 to-pink-400 text-white shadow-sm
+                    hover:brightness-95 transition disabled:opacity-50">
+            {{ loading ? 'Enviando...' : 'Enviar mensaje' }}
+          </button>
+          <a href="assets/cv/Paula_Reixach_Bonnin_CV.pdf" download
+            class="px-6 py-2.5 rounded-full border border-rose-300 text-rose-500 bg-white hover:bg-rose-50 font-medium transition">
+            Descargar CV
+          </a>
+        </div>
+      </form>
+    </div>
+
+    <!-- Info de contacto -->
+    <div class="mt-10 flex flex-wrap justify-center gap-8 text-slate-600">
+      <div class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+            d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+        <span>paula.reixachbon&#64;gmail.com</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.21l-2.26 1.13a11.04 11.04 0 005.52 5.52l1.13-2.26a1 1 0 011.21-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z" />
+        </svg>
+        <span>+34 690 917 346</span>
+      </div>
+      <a href="https://www.linkedin.com/in/paulareixach/" target="_blank"
+        class="flex items-center gap-2 hover:text-rose-500 transition">
+        <svg class="w-5 h-5 text-rose-400" fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.09V23h-4v-6.65c0-1.59-.03-3.64-2.22-3.64-2.23 0-2.57 1.74-2.57 3.53V23h-4V8z" />
+        </svg>
+        <span>LinkedIn</span>
+      </a>
+    </div>
+  </div>
+
+
+  <!-- Mensaje de confirmación -->
+  <div *ngIf="sent"
+    class="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-2xl border border-rose-200 bg-white shadow-lg px-5 py-3 animate-fade-in-up">
+    <div class="h-3 w-3 rounded-full bg-rose-400 animate-pulse"></div>
+    <div>
+      <p class="font-semibold text-rose-600">Mensaje enviado!</p>
+      <p class="text-sm text-slate-600">Gracias por tu mensaje 😊<br>Te responderé lo antes posible.</p>
+    </div>
+  </div>
+
+</section>

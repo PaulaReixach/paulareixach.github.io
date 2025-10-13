@@ -16,13 +16,13 @@ interface Particle {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NavbarComponent, 
+  imports: [NavbarComponent,
     RouterModule,
     FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent{
+export class AppComponent {
   title = 'portfolio-base';
 
 

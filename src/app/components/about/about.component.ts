@@ -1,5 +1,5 @@
 import { Component, AfterViewInit, ElementRef, QueryList, ViewChildren} from '@angular/core';
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
 import { ScrollAnimateDirective } from './scroll-animate.directive';
 
 @Component({
@@ -7,27 +7,32 @@ import { ScrollAnimateDirective } from './scroll-animate.directive';
   standalone: true,
   imports: [CommonModule, ScrollAnimateDirective],
   templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss']
+  styleUrls: ['./about.component.scss'],
 })
-export class AboutComponent implements AfterViewInit{
+export class AboutComponent implements AfterViewInit {
   stats = [
-  { label: 'Años', value: 2, suffix: '+', current: 0 },
-  { label: 'Proyectos', value: 5, suffix: '+', current: 0 },
-  { label: 'Tecnologías', value: 14, suffix: '+', current: 0 },
+    { label: 'Años', value: 2, suffix: '+', current: 0 },
+    { label: 'Proyectos', value: 5, suffix: '+', current: 0 },
+    { label: 'Tecnologías', value: 14, suffix: '+', current: 0 },
   ];
 
-   @ViewChildren('statEl') statElements!: QueryList<ElementRef>;
+  @ViewChildren('statEl') statElements!: QueryList<ElementRef>;
 
-    ngAfterViewInit() {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const index = Number((entry.target as HTMLElement).dataset['index']);
-          this.animateValue(index);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
+  ngAfterViewInit() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number(
+              (entry.target as HTMLElement).dataset['index']
+            );
+            this.animateValue(index);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
 
     this.statElements.forEach((el, index) => {
       (el.nativeElement as HTMLElement).dataset['index'] = index.toString();

@@ -1,15 +1,22 @@
-<section id="proyecto-detalle" class="py-16 px-6 bg-gradient-to-br from-slate-50 via-white to-rose-100 relative overflow-hidden" *ngIf="projectData">
+<section id="proyecto-detalle"
+  class="py-10 sm:py-12 lg:py-16 px-4 sm:px-6 bg-gradient-to-br from-slate-50 via-white to-rose-100 relative overflow-hidden"
+  *ngIf="projectData">
+  <div class="max-w-6xl mx-auto relative z-10"></div>
   <div class="absolute top-20 left-10 w-32 h-32 bg-rose-200 rounded-full opacity-20 floating-element"></div>
-  <div class="absolute top-40 right-20 w-24 h-24 bg-purple-300 rounded-full opacity-15 floating-element" style="animation-delay: 2s;"></div>
-  <div class="absolute bottom-32 left-1/4 w-20 h-20 bg-pink-200 rounded-full opacity-25 floating-element" style="animation-delay: 4s;"></div>
-  <div class="absolute top-1/3 right-1/3 w-16 h-16 bg-indigo-200 rounded-full opacity-20 floating-element" style="animation-delay: 1s;"></div>
+  <div class="absolute top-40 right-20 w-24 h-24 bg-purple-300 rounded-full opacity-15 floating-element"
+    style="animation-delay: 2s;"></div>
+  <div class="absolute bottom-32 left-1/4 w-20 h-20 bg-pink-200 rounded-full opacity-25 floating-element"
+    style="animation-delay: 4s;"></div>
+  <div class="absolute top-1/3 right-1/3 w-16 h-16 bg-indigo-200 rounded-full opacity-20 floating-element"
+    style="animation-delay: 1s;"></div>
 
   <div class="max-w-6xl mx-auto relative z-10">
-    <!-- Header with back button -->
+    <!-- Cabecera y botón de volver atrás -->
     <div class="flex items-center justify-between mb-12 animate-slide-in-up">
-      <button (click)="goBack()" 
-              class="group flex items-center gap-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-rose-600 hover:text-rose-700 font-medium transition duration-300 shadow-lg hover:shadow-xl hover:scale-105 animate-shimmer">
-        <svg class="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <button (click)="goBack()"
+        class="group flex items-center gap-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-rose-600 hover:text-rose-700 font-medium transition duration-300 shadow-lg hover:shadow-xl hover:scale-105 animate-shimmer">
+        <svg class="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor"
+          viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
         </svg>
         Volver a Proyectos
@@ -20,485 +27,454 @@
     </div>
 
     <div class="text-center mb-16">
-  <div class="relative group w-44 h-44 mx-auto mb-8 rounded-full overflow-hidden shadow-2xl 
+      <div class="relative group w-44 h-44 mx-auto mb-8 rounded-full overflow-hidden shadow-2xl 
               p-[4px] bg-gradient-to-r from-rose-400 via-pink-300 to-purple-400 animate-gradient-x">
-    <img [src]="projectData.image" alt="{{ projectData.title }}"
-         class="w-full h-full object-cover rounded-full transition duration-500 group-hover:scale-110" />
-  </div>
-  <h1 class="text-5xl font-bold gradient-text mb-4">{{ projectData.title }}</h1>
-  <p class="text-lg text-gray-600">{{ projectData.subtitle }}</p>
-</div>
-    
-    <!-- Project Content -->
-    <div class="grid lg:grid-cols-3 gap-8">
-      <!-- Main Content -->
-    <div class="lg:col-span-2 space-y-8">
+        <img [src]="projectData.icon" [alt]="projectData.title"
+          class="w-full h-full object-cover rounded-full transition duration-500 group-hover:scale-110" />
+      </div>
+      <h1 class="text-5xl font-bold gradient-text mb-4">{{ projectData.title }}</h1>
+      <p class="text-lg text-gray-600">{{ projectData.subtitle }}</p>
+    </div>
 
-         <!-- Tarjeta con animación de entrada -->
-        <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-10 shadow-xl card-hover border border-rose-100/40 relative overflow-hidden animate-card-enter">
-            
-        <!-- Línea decorativa superior -->
-       <div class="absolute top-0 left-0 w-full h-px 
+    <!-- Contenido -->
+    <div class="grid lg:grid-cols-3 gap-6 sm:gap-8">
+      <div class="lg:col-span-2 space-y-8">
+        <div
+          class="bg-white/80 backdrop-blur-sm rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10 shadow-xl card-hover border border-rose-100/40 relative overflow-hidden animate-card-enter">
+          <div class="absolute top-0 left-0 w-full h-px 
                     bg-gradient-to-r from-transparent via-rose-300/70 to-transparent"></div>
 
-
-            <!-- Tabs -->
-            <div class="flex justify-center gap-12 mb-10 text-base font-semibold">
-                <button (click)="setActiveTab('descripcion')" 
-                class="relative pb-3 px-2 transition text-lg"
+          <!-- Primer bloque -->
+          <div class="mb-6 sm:mb-8">
+            <div class="flex gap-6 overflow-x-auto no-scrollbar justify-center text-sm sm:text-base font-semibold">
+              <button (click)="setActiveTab('descripcion')" class="relative pb-2 sm:pb-3 px-2"
                 [class.text-rose-500]="activeTab === 'descripcion'">
                 Descripción
-                <span *ngIf="activeTab === 'descripcion'" 
-                        class="absolute left-0 bottom-0 w-full h-0.5 bg-gradient-to-r from-rose-400 to-pink-400 animate-[fadeIn_0.3s_ease]"></span>
-                </button>
-                <button (click)="setActiveTab('caracteristicas')" 
-                class="relative pb-3 px-2 transition text-lg"
+                <span *ngIf="activeTab === 'descripcion'"
+                  class="absolute left-0 -bottom-0.5 sm:bottom-0 w-full h-0.5 bg-gradient-to-r from-rose-400 to-pink-400"></span>
+              </button>
+              <button (click)="setActiveTab('caracteristicas')" class="relative pb-2 sm:pb-3 px-2"
                 [class.text-rose-500]="activeTab === 'caracteristicas'">
                 Características
-                <span *ngIf="activeTab === 'caracteristicas'" 
-                        class="absolute left-0 bottom-0 w-full h-0.5 bg-gradient-to-r from-rose-400 to-pink-400 animate-[fadeIn_0.3s_ease]"></span>
-                </button>
-                <button (click)="setActiveTab('resultados')" 
-                class="relative pb-3 px-2 transition text-lg"
+                <span *ngIf="activeTab === 'caracteristicas'"
+                  class="absolute left-0 -bottom-0.5 sm:bottom-0 w-full h-0.5 bg-gradient-to-r from-rose-400 to-pink-400"></span>
+              </button>
+              <button (click)="setActiveTab('resultados')" class="relative pb-2 sm:pb-3 px-2"
                 [class.text-rose-500]="activeTab === 'resultados'">
                 Resultados
-                <span *ngIf="activeTab === 'resultados'" 
-                        class="absolute left-0 bottom-0 w-full h-0.5 bg-gradient-to-r from-rose-400 to-pink-400 animate-[fadeIn_0.3s_ease]"></span>
-                </button>
-                <button (click)="setActiveTab('desafios')" 
-                class="relative pb-3 px-2 transition text-lg"
+                <span *ngIf="activeTab === 'resultados'"
+                  class="absolute left-0 -bottom-0.5 sm:bottom-0 w-full h-0.5 bg-gradient-to-r from-rose-400 to-pink-400"></span>
+              </button>
+              <button (click)="setActiveTab('desafios')" class="relative pb-2 sm:pb-3 px-2"
                 [class.text-rose-500]="activeTab === 'desafios'">
                 Desafíos
-                <span *ngIf="activeTab === 'desafios'" 
-                        class="absolute left-0 bottom-0 w-full h-0.5 bg-gradient-to-r from-rose-400 to-pink-400 animate-[fadeIn_0.3s_ease]"></span>
-                </button>
+                <span *ngIf="activeTab === 'desafios'"
+                  class="absolute left-0 -bottom-0.5 sm:bottom-0 w-full h-0.5 bg-gradient-to-r from-rose-400 to-pink-400"></span>
+              </button>
             </div>
+          </div>
 
-            <!-- Contenido dinámico -->
-            <div *ngIf="activeTab === 'descripcion'" 
-                class="animate-fade-in text-gray-700 text-justify max-w-2xl mx-auto leading-relaxed space-y-4">
-                <p>{{ projectData.description }}</p>
-            </div>
+          <!-- Contenido dinámico -->
+          <div *ngIf="activeTab === 'descripcion'"
+            class="animate-fade-in text-gray-700 text-justify max-w-2xl mx-auto leading-relaxed space-y-4">
+            <p [innerHTML]="projectData.description"></p>
+          </div>
 
-            
-            <div *ngIf="activeTab === 'caracteristicas'" 
-                class="animate-fade-in text-gray-700 text-left max-w-2xl mx-auto leading-relaxed">
+
+          <div *ngIf="activeTab === 'caracteristicas'"
+            class="animate-fade-in text-gray-700 text-left max-w-2xl mx-auto leading-relaxed">
 
             <div class="relative border-l-2 border-rose-200 pl-6 space-y-6">
-                <div *ngFor="let feature of projectData?.features" class="relative group cursor-default">
-                <!-- Puntito mini alineado -->
+              <div *ngFor="let feature of projectData?.features" class="relative group cursor-default">
                 <div class="absolute -left-[15px] top-1/2 -translate-y-1/2 
                             w-1.5 h-1.5 rounded-full bg-rose-400 
                             transition-transform duration-300 group-hover:scale-125 group-hover:bg-rose-600">
                 </div>
-                <p class="text-justify">{{ feature }}</p>
-                </div>
+                <p class="text-justify" [innerHTML]="feature"></p>
+              </div>
             </div>
-            </div>
+          </div>
 
 
-           <div *ngIf="activeTab === 'resultados'" class="animate-fade-in text-gray-700 text-left max-w-2xl mx-auto leading-relaxed space-y-4">
+          <div *ngIf="activeTab === 'resultados'"
+            class="animate-fade-in text-gray-700 text-left max-w-2xl mx-auto leading-relaxed space-y-4">
             <div *ngFor="let result of projectData?.results" class="flex items-start gap-3 p-3">
-                <div class="w-6 h-6 bg-rose-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <svg class="w-3 h-3 text-rose-700" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 
+              <div class="w-6 h-6 bg-rose-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-3 h-3 text-rose-700" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 
                         010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 
                         011.414-1.414L8 12.586l7.293-7.293a1 1 0 
                         011.414 0z" clip-rule="evenodd"></path>
-                    </svg>
-                </div>
-            <p class="text-justify">{{ result }}</p>
+                </svg>
+              </div>
+              <p class="text-justify">{{ result }}</p>
             </div>
+          </div>
+
+
+          <div *ngIf="activeTab === 'desafios'"
+            class="animate-fade-in text-gray-700 text-left max-w-2xl mx-auto leading-relaxed space-y-4">
+            <div *ngFor="let challenge of projectData?.challenges"
+              class="p-4 rounded-xl bg-gradient-to-r from-rose-50 to-pink-50 border border-rose-100">
+              <p class="text-justify">{{ challenge }}</p>
             </div>
-
-
-            <div *ngIf="activeTab === 'desafios'" class="animate-fade-in text-gray-700 text-left max-w-2xl mx-auto leading-relaxed space-y-4">
-                <div *ngFor="let challenge of projectData?.challenges" 
-                    class="p-4 rounded-xl bg-gradient-to-r from-rose-50 to-pink-50 border border-rose-100">
-                <p class="text-justify">{{ challenge }}</p>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Galería — Moderna, accesible y funcional -->
-<div class="gallery-block relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl 
-            border border-rose-100/40 overflow-hidden transition-shadow hover:shadow-2xl"
-     style="animation-delay:0.4s"
-     role="region" aria-labelledby="gallery-title"
-     tabindex="0"
-     (keydown)="onGalleryKeydown($event)">
-
-  <!-- Línea superior sutil -->
-  <div class="absolute top-0 left-0 w-full h-px 
-              bg-gradient-to-r from-transparent via-rose-300/70 to-transparent"></div>
-
-  <!-- Header con puntos -->
-  <div class="flex items-center gap-2 mb-8">
-    <span class="text-rose-300 opacity-60">•</span>
-    <h2 id="gallery-title" class="text-3xl font-bold text-gray-800">Galería del Proyecto</h2>
-    <span class="text-rose-300 opacity-60">•</span>
-
-    <!-- contador (opcional) -->
-    <span *ngIf="projectData?.gallery?.length as total"
-        class="ml-auto px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-rose-600 border border-rose-200">
-        {{ activeIndex + 1 }} / {{ total }}
-    </span>
-  </div>
-
-  <!-- Imagen Principal -->
-  <div class="mb-8">
-    <div class="relative h-[24rem] md:h-[28rem] lg:h-[32rem] rounded-2xl overflow-hidden shadow-lg cursor-pointer select-none"
-
-         (click)="openImageModal(activeIndex)"
-         aria-label="Abrir imagen en grande">
-      <!-- Imagen activa -->
-      <img
-        [src]="activeImage?.src || projectData.gallery?.[0]?.src || projectData.image2"
-        [alt]="activeImage?.title || projectData.title || 'Imagen principal'"
-        class="w-full h-full object-cover"
-        loading="eager" decoding="async" />
-
-      <!-- overlay superior + etiqueta -->
-      <div class="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent pointer-events-none"></div>
-      <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-rose-600">
-        Imagen principal
-      </div>
-
-      <!-- título/desc -->
-      <div class="absolute bottom-4 left-4 right-4 pointer-events-none">
-        <div class="bg-white/90 backdrop-blur-sm rounded-xl p-4">
-          <h4 class="font-bold text-gray-700 mb-1 truncate">
-            {{ activeImage?.title || 'Vista principal' }}
-          </h4>
-          <p class="text-sm text-gray-500 truncate">
-            {{ activeImage?.desc  || 'Resumen visual del proyecto' }}
-          </p>
-        </div>
-      </div>
-
-      <!-- Controles Prev / Next (no abren modal) -->
-      <button type="button"
-              class="gallery-nav-btn absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm 
-                     w-10 h-10 rounded-full shadow hover:shadow-md grid place-items-center focus:outline-none 
-                     focus:ring-2 focus:ring-rose-300"
-              aria-label="Imagen anterior"
-              (click)="$event.stopPropagation(); prevImage()">
-        <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-        </svg>
-      </button>
-
-      <button type="button"
-              class="gallery-nav-btn absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm 
-                     w-10 h-10 rounded-full shadow hover:shadow-md grid place-items-center focus:outline-none 
-                     focus:ring-2 focus:ring-rose-300"
-              aria-label="Siguiente imagen"
-              (click)="$event.stopPropagation(); nextImage()">
-        <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-        </svg>
-      </button>
-    </div>
-  </div>
-
-  <!-- Miniaturas -->
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-
-    <ng-container *ngFor="let item of projectData?.gallery; let i = index">
-      <button *ngIf="i >= 0"
-              type="button"
-              class="thumb relative h-24 md:h-28 rounded-xl overflow-hidden  bg-gray-100 border 
-                     cursor-pointer transition hover:border-rose-200 hover:shadow-lg text-left
-                     focus:outline-none focus:ring-2 focus:ring-rose-300"
-              [class.border-rose-300]="i === activeIndex"
-              [class.border-transparent]="i !== activeIndex"
-              (click)="setActive(i)"
-              (dblclick)="openImageModal(i)"
-            [attr.aria-label]="'Seleccionar miniatura: ' + (item?.title || ('Imagen ' + (i+1)))">   
-        <img [src]="item?.src"
-             [alt]="item?.title || ('Imagen ' + (i+1))"
-             class="w-full h-full object-cover"
-             loading="lazy" decoding="async" />
-        <div class="absolute bottom-2 left-2 right-2">
-          <div class="bg-white/90 backdrop-blur-sm rounded-md px-2 py-1.5">
-            <p class="text-xs font-medium text-gray-700 truncate">
-              {{ item?.title || ('Imagen ' + (i+1)) }}
-            </p>
           </div>
         </div>
-        <!-- indicador activo -->
-        <div *ngIf="i === activeIndex"
-             class="absolute top-2 right-2 px-2 py-0.5 rounded-full text-[10px] font-semibold 
+
+        <!-- Galería -->
+        <div
+          class="bg-white/80 backdrop-blur-sm rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10 shadow-xl card-hover border border-rose-100/40 relative overflow-hidden animate-card-enter"
+          role="region" aria-labelledby="gallery-title" tabindex="0" (keydown)="onGalleryKeydown($event)">
+
+          <div class="absolute top-0 left-0 w-full h-px 
+              bg-gradient-to-r from-transparent via-rose-300/70 to-transparent"></div>
+
+          <div class="flex items-center gap-2 mb-8">
+            <span class="text-rose-300 opacity-60">•</span>
+            <h2 id="gallery-title" class="text-3xl font-bold text-gray-800">Galería del Proyecto</h2>
+            <span class="text-rose-300 opacity-60">•</span>
+
+            <!-- contador -->
+            <span *ngIf="projectData.gallery?.length as total"
+              class="ml-auto px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-50 text-rose-600 border border-rose-200">
+              {{ activeIndex + 1 }} / {{ total }}
+            </span>
+          </div>
+
+          <!-- Imagen Principal -->
+          <div class="mb-8">
+            <div
+              class="relative h-[24rem] md:h-[28rem] lg:h-[32rem] rounded-2xl overflow-hidden shadow-lg cursor-pointer select-none"
+              (click)="openImageModal(activeIndex)" aria-label="Abrir imagen en grande">
+              <!-- Imagen activa -->
+              <img [src]="activeImage?.src || projectData.gallery[0].src || ''"
+                [alt]="activeImage?.alt || activeImage?.title || projectData.title || 'Imagen principal'"
+                class="w-full h-full object-cover" loading="eager" decoding="async" />
+
+              <div class="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent pointer-events-none"></div>
+              <div
+                class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-rose-600">
+                Imagen principal
+              </div>
+
+              <!-- Titulo/Desc -->
+              <div class="absolute bottom-4 left-4 right-4 pointer-events-none">
+                <div class="bg-white/90 backdrop-blur-sm rounded-xl p-4">
+                  <h4 class="font-bold text-gray-700 mb-1 truncate">
+                    {{ activeImage?.title || 'Vista principal' }}
+                  </h4>
+                  <p class="text-sm text-gray-500 truncate">
+                    {{ activeImage?.desc || 'Resumen visual del proyecto' }}
+                  </p>
+                </div>
+              </div>
+
+              <!-- Botones Anterior o Siguiente Imagen -->
+              <button type="button" class="gallery-nav-btn absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm 
+                     w-10 h-10 rounded-full shadow hover:shadow-md grid place-items-center focus:outline-none 
+                     focus:ring-2 focus:ring-rose-300" aria-label="Imagen anterior"
+                (click)="$event.stopPropagation(); prevImage()">
+                <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              <button type="button" class="gallery-nav-btn absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm 
+                     w-10 h-10 rounded-full shadow hover:shadow-md grid place-items-center focus:outline-none 
+                     focus:ring-2 focus:ring-rose-300" aria-label="Siguiente imagen"
+                (click)="$event.stopPropagation(); nextImage()">
+                <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Miniaturas -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+
+            <ng-container *ngFor="let item of projectData?.gallery; let i = index">
+              <button *ngIf="i >= 0" type="button" class="thumb relative h-24 md:h-28 rounded-xl overflow-hidden  bg-gray-100 border 
+                     cursor-pointer transition hover:border-rose-200 hover:shadow-lg text-left
+                     focus:outline-none focus:ring-2 focus:ring-rose-300" [class.border-rose-300]="i === activeIndex"
+                [class.border-transparent]="i !== activeIndex" (click)="setActive(i)" (dblclick)="openImageModal(i)"
+                [attr.aria-label]="'Seleccionar miniatura: ' + (item?.title || ('Imagen ' + (i+1)))">
+                <img [src]="item?.src" [alt]="item?.title || ('Imagen ' + (i+1))" class="w-full h-full object-cover"
+                  loading="lazy" decoding="async" />
+                <div class="absolute bottom-2 left-2 right-2">
+                  <div class="bg-white/90 backdrop-blur-sm rounded-md px-2 py-1.5">
+                    <p class="text-xs font-medium text-gray-700 truncate">
+                      {{ item?.title || ('Imagen ' + (i+1)) }}
+                    </p>
+                  </div>
+                </div>
+
+                <!-- indicador activo -->
+                <div *ngIf="i === activeIndex" class="absolute top-2 right-2 px-2 py-0.5 rounded-full text-[10px] font-semibold 
                     bg-rose-50 text-rose-600 border border-rose-200">
-          Activa
-        </div>
-      </button>
-    </ng-container>
-  </div>
+                  Activa
+                </div>
+              </button>
+            </ng-container>
+          </div>
 
-
-
-<!-- Botón: Glass outline -->
-<div class="text-center mt-6">
-  <button
-    (click)="openImageModal(activeIndex)"
-    class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full
+          <div class="text-center mt-6">
+            <button (click)="openImageModal(activeIndex)" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full
            border border-rose-300/70 bg-white/60 backdrop-blur-sm
            text-rose-700 font-medium transition
            hover:bg-white/90 hover:border-rose-400
            focus:outline-none focus:ring-2 focus:ring-rose-300
            disabled:opacity-50 disabled:cursor-not-allowed"
-    [attr.aria-label]="'Abrir galería en ' + (activeImage?.title || 'la imagen actual')">
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"/>
-    </svg>
-    Abrir galería
-  </button>
-</div>
+              [attr.aria-label]="'Abrir galería en ' + (activeImage?.title || 'la imagen actual')">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" />
+              </svg>
+              Abrir galería
+            </button>
+          </div>
+        </div>
 
 
+        <div *ngIf="isLightboxOpen"
+          class="fixed inset-0 z-[100] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" role="dialog"
+          aria-modal="true" [attr.aria-labelledby]="'lightbox-title'" (click)="closeLightbox()">
 
+          <!-- Contenido -->
+          <div class="relative w-full max-w-5xl max-h-[90vh] bg-white/90 rounded-2xl shadow-2xl overflow-hidden"
+            (click)="$event.stopPropagation()">
 
-  
-</div>
+            <div class="flex items-center justify-between px-4 py-3 border-b border-rose-100/60 bg-white/80">
+              <h4 id="lightbox-title" class="font-semibold text-gray-800 truncate">
+                {{ projectData.gallery[lightboxIndex].title || 'Imagen' }}
+              </h4>
+              <div class="flex items-center gap-2 text-sm text-gray-500">
+                {{ (lightboxIndex + 1) }} / {{ projectData.gallery.length || 0 }}
+                <button type="button"
+                  class="ml-3 w-9 h-9 grid place-items-center rounded-full bg-white/90 shadow hover:shadow-md focus:outline-none focus:ring-2 focus:ring-rose-300"
+                  [attr.aria-label]="'Cerrar'" (click)="closeLightbox()">
+                  <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
 
+            <!-- Imagen -->
+            <div class="relative bg-black/05">
+              <img [src]="projectData.gallery[lightboxIndex].src"
+                [alt]="projectData.gallery[lightboxIndex].title || 'Imagen ampliada'"
+                class="max-h-[72vh] w-full object-contain select-none" />
+              <!-- Controles -->
+              <button type="button"
+                class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 grid place-items-center shadow hover:shadow-md focus:outline-none focus:ring-2 focus:ring-rose-300"
+                [attr.aria-label]="'Anterior'" (click)="prevLightbox()">
+                <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button type="button"
+                class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 grid place-items-center shadow hover:shadow-md focus:outline-none focus:ring-2 focus:ring-rose-300"
+                [attr.aria-label]="'Siguiente'" (click)="nextLightbox()">
+                <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
 
-
-
-<!-- Lightbox / Modal -->
-<div *ngIf="isLightboxOpen"
-     class="fixed inset-0 z-[100] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4"
-     role="dialog" aria-modal="true" [attr.aria-labelledby]="'lightbox-title'"
-     (click)="closeLightbox()">
-
-  <!-- Contenido -->
-  <div class="relative w-full max-w-5xl max-h-[90vh] bg-white/90 rounded-2xl shadow-2xl overflow-hidden"
-       (click)="$event.stopPropagation()">
-
-    <!-- Barra superior -->
-    <div class="flex items-center justify-between px-4 py-3 border-b border-rose-100/60 bg-white/80">
-      <h4 id="lightbox-title" class="font-semibold text-gray-800 truncate">
-        {{ projectData.gallery?.[lightboxIndex]?.title || 'Imagen' }}
-      </h4>
-      <div class="flex items-center gap-2 text-sm text-gray-500">
-        {{ (lightboxIndex + 1) }} / {{ projectData.gallery?.length || 0 }}
-        <button type="button"
-                class="ml-3 w-9 h-9 grid place-items-center rounded-full bg-white/90 shadow hover:shadow-md focus:outline-none focus:ring-2 focus:ring-rose-300"
-                [attr.aria-label]="'Cerrar'"
-                (click)="closeLightbox()">
-          <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        </button>
+            <!-- Pie con descripción -->
+            <div class="px-4 py-3 bg-white/80 border-t border-rose-100/60">
+              <p class="text-sm text-gray-600">
+                {{ projectData.gallery[lightboxIndex].desc || ' ' }}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <!-- Imagen -->
-    <div class="relative bg-black/05">
-      <img [src]="projectData.gallery?.[lightboxIndex]?.src"
-           [alt]="projectData.gallery?.[lightboxIndex]?.title || 'Imagen ampliada'"
-           class="max-h-[72vh] w-full object-contain select-none" />
-      <!-- Controles -->
-      <button type="button"
-              class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 grid place-items-center shadow hover:shadow-md focus:outline-none focus:ring-2 focus:ring-rose-300"
-              [attr.aria-label]="'Anterior'" (click)="prevLightbox()">
-        <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-        </svg>
-      </button>
-      <button type="button"
-              class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 grid place-items-center shadow hover:shadow-md focus:outline-none focus:ring-2 focus:ring-rose-300"
-              [attr.aria-label]="'Siguiente'" (click)="nextLightbox()">
-        <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-        </svg>
-      </button>
-    </div>
-
-    <!-- Pie con descripción -->
-    <div class="px-4 py-3 bg-white/80 border-t border-rose-100/60">
-      <p class="text-sm text-gray-600">
-        {{ projectData.gallery?.[lightboxIndex]?.desc || ' ' }}
-      </p>
-    </div>
-  </div>
-</div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
       <!-- Sidebar -->
       <div class="space-y-6">
         <!-- Tecnologías -->
-        <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-10 shadow-xl card-hover border border-rose-100/40 relative overflow-hidden animate-card-enter"
-            style="animation-delay: 0.1s;">
-            <!-- Línea superior sutil -->
-            <div class="absolute top-0 left-0 w-full h-px 
+        <div
+          class="bg-white/80 backdrop-blur-sm rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10 shadow-xl card-hover border border-rose-100/40 relative overflow-hidden animate-card-enter"
+          style="animation-delay: 0.1s;">
+          <div class="absolute top-0 left-0 w-full h-px 
                         bg-gradient-to-r from-transparent via-rose-300/70 to-transparent"></div>
 
-            <div class="flex items-center gap-2 mb-6 text-rose-400">
-                <span class="text-lg leading-none opacity-70">•</span>
-                <h3 class="text-2xl font-bold text-gray-800">Tecnologías</h3>
-                <span class="text-lg leading-none opacity-70">•</span>
-            </div>
+          <div class="flex items-center gap-2 mb-6 text-rose-400">
+            <span class="text-lg leading-none opacity-70">•</span>
+            <h3 class="text-2xl font-bold text-gray-800">Tecnologías</h3>
+            <span class="text-lg leading-none opacity-70">•</span>
+          </div>
 
-            <div class="flex flex-wrap gap-2">
-                <span *ngFor="let tech of projectData.technologies"
-                class="tech-pill px-3 py-1 rounded-full text-sm font-medium
+          <div class="flex flex-wrap gap-2">
+            <span *ngFor="let tech of projectData.technologies" class="tech-pill px-3 py-1 rounded-full text-sm font-medium
                         bg-rose-50 text-rose-700 border border-rose-200">
-                {{ tech }}
-                </span>
-            </div>
+              {{ tech }}
+            </span>
+          </div>
         </div>
 
 
-
-       <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-10 shadow-xl card-hover border border-rose-100/40 relative overflow-hidden animate-card-enter">
-            <!-- Línea superior -->
-            <div class="absolute top-0 left-0 w-full h-px 
+        <!-- Información -->
+        <div
+          class="bg-white/80 backdrop-blur-sm rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10 shadow-xl card-hover border border-rose-100/40 relative overflow-hidden animate-card-enter">
+          <div class="absolute top-0 left-0 w-full h-px 
                         bg-gradient-to-r from-transparent via-rose-300/70 to-transparent"></div>
 
-            <!-- Título -->
-            <div class="flex items-center gap-2 mb-6">
-                <span class="text-rose-400 opacity-70">•</span>
-                <h3 class="text-2xl font-bold text-gray-800">Información</h3>
-                <span class="text-rose-400 opacity-70">•</span>
-            </div>
+          <!-- Título -->
+          <div class="flex items-center gap-2 mb-6">
+            <span class="text-rose-400 opacity-70">•</span>
+            <h3 class="text-2xl font-bold text-gray-800">Información</h3>
+            <span class="text-rose-400 opacity-70">•</span>
+          </div>
 
-            <!-- Timeline info -->
-            <div class="relative border-l-2 border-rose-200 pl-6 space-y-5">
-                <div class="relative">
-                <span class="absolute -left-[16px] top-2 w-2 h-2 rounded-full bg-rose-400"></span>
-                <p class="text-gray-800"><strong>Estado: </strong> <span class="text-green-600 font-semibold">{{projectData.state}}</span></p>
-                </div>
-                <div class="relative">
-                <span class="absolute -left-[16px] top-2 w-2 h-2 rounded-full bg-rose-400"></span>
-                <p class="text-gray-800"><strong>Tipo: </strong> <span class="text-gray-600">{{projectData.type}}</span></p>
-                </div>
-                <div class="relative">
-                <span class="absolute -left-[16px] top-2 w-2 h-2 rounded-full bg-rose-400"></span>
-                <p class="text-gray-600"><strong>Duración: </strong> <span class="text-gray-600">{{projectData.duration}}</span></p>
-                </div>
+          <!-- Info del tiempo -->
+          <div class="relative border-l-2 border-rose-200 pl-6 space-y-5">
+            <div class="relative">
+              <span class="absolute -left-[16px] top-2 w-2 h-2 rounded-full bg-rose-400"></span>
+              <p class="text-gray-800"><strong>Estado: </strong> <span
+                  class="text-green-600 font-semibold">{{projectData.state}}</span></p>
             </div>
+            <div class="relative">
+              <span class="absolute -left-[16px] top-2 w-2 h-2 rounded-full bg-rose-400"></span>
+              <p class="text-gray-800"><strong>Tipo: </strong> <span class="text-gray-600">{{projectData.type}}</span>
+              </p>
             </div>
+            <div class="relative">
+              <span class="absolute -left-[16px] top-2 w-2 h-2 rounded-full bg-rose-400"></span>
+              <p class="text-gray-800"><strong>Año de realización: </strong> <span
+                  class="text-gray-600">{{projectData.year}}</span></p>
+            </div>
+            <div class="relative">
+              <span class="absolute -left-[16px] top-2 w-2 h-2 rounded-full bg-rose-400"></span>
+              <p class="text-gray-800"><strong>Duración: </strong> <span
+                  class="text-gray-600">{{projectData.duration}}</span></p>
+            </div>
+          </div>
+        </div>
 
 
-         <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-10 shadow-xl card-hover border border-rose-100/40 relative overflow-hidden animate-card-enter">
-            <!-- Línea superior -->
-             <div class="absolute top-0 left-0 w-full h-px 
+        <div
+          class="bg-white/80 backdrop-blur-sm rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10 shadow-xl card-hover border border-rose-100/40 relative overflow-hidden animate-card-enter">
+          <div class="absolute top-0 left-0 w-full h-px 
                         bg-gradient-to-r from-transparent via-rose-300/70 to-transparent"></div>
 
-            <!-- Icono -->
-            <div class="w-14 h-14 bg-rose-100 rounded-full mx-auto flex items-center justify-center mb-4">
-                <svg class="w-7 h-7 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-                </svg>
+          <!-- Icono -->
+          <div class="w-14 h-14 bg-rose-100 rounded-full mx-auto flex items-center justify-center mb-4">
+            <svg class="w-7 h-7 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+          </div>
+
+          <!-- Texto -->
+          <h3 class="text-2xl font-bold text-gray-800 mb-2">¿Proyecto Similar?</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed">¿Te interesa un proyecto parecido? ¡Hablemos!</p>
+
+          <!-- Botón -->
+          <button (click)="toggleContactForm()" class="w-full bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600
+                          text-white py-3 px-6 rounded-xl font-semibold transition-all duration-300
+                          btn-hover animate-shimmer">
+            {{ showContactForm ? 'Cerrar' : 'Contactar Ahora' }}
+          </button>
+
+          <!-- Formulario -->
+          <div class="contact-accordion" [class.open]="showContactForm" [attr.aria-hidden]="!showContactForm">
+            <div class="contact-accordion__inner">
+              <form #form="ngForm" (ngSubmit)="sendEmail(form)" class="flex flex-col gap-6 text-left" novalidate>
+
+                <div class="sm:col-span-1">
+                  <label for="name" class="block text-sm font-medium text-slate-700 mb-1">
+                    Nombre <span class="text-rose-500">*</span>
+                  </label>
+                  <input id="name" name="name" [(ngModel)]="contact.name" required
+                    class="w-full rounded-xl border border-rose-200 bg-white px-4 py-2
+                                text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-rose-300 transition" placeholder="Tu nombre" />
+                </div>
+
+                <!-- Email -->
+                <div class="sm:col-span-1">
+                  <label for="email" class="block text-sm font-medium text-slate-700 mb-1">
+                    Correo electrónico <span class="text-rose-500">*</span>
+                  </label>
+                  <input id="email" name="email" type="email" [(ngModel)]="contact.email" required email
+                    #emailModel="ngModel" class="w-full rounded-xl border border-rose-200 bg-white px-4 py-2
+                                text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-rose-300
+                                transition" placeholder="tu@correo.com" />
+
+                  <!-- Mensajes de error -->
+                  <p *ngIf="form.submitted && emailModel.invalid" class="mt-1 text-xs text-rose-600">
+                    {{ emailError(emailModel) }}
+                  </p>
+                </div>
+
+                <!-- Mensaje -->
+                <div class="sm:col-span-2">
+                  <label for="message" class="block text-sm font-medium text-slate-700 mb-1">
+                    Mensaje <span class="text-rose-500">*</span>
+                  </label>
+                  <textarea id="message" name="message" rows="5" [(ngModel)]="contact.message" required
+                    class="w-full rounded-xl border border-rose-200 bg-white px-4 py-2 focus:outline-none focus:ring-2 focus:ring-rose-300 text-slate-800 placeholder-slate-400"></textarea>
+                </div>
+
+                <div class="sm:col-span-2 flex flex-wrap justify-center gap-4 mt-4">
+                  <button type="submit" [disabled]="form.invalid || loading" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full
+                            bg-gradient-to-r from-rose-400 to-pink-400 text-white shadow-sm
+                            hover:brightness-95 transition disabled:opacity-50">
+                    {{ loading ? 'Enviando...' : 'Enviar mensaje' }}
+                  </button>
+                </div>
+              </form>
             </div>
-
-            <!-- Texto -->
-            <h3 class="text-2xl font-bold text-gray-800 mb-2">¿Proyecto Similar?</h3>
-            <p class="text-gray-600 mb-6 leading-relaxed">¿Te interesa un proyecto parecido? ¡Hablemos!</p>
-
-            <!-- Botón -->
-            <button class="w-full bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white py-3 px-6 rounded-xl font-semibold transition-all duration-300 btn-hover animate-shimmer">
-                Contactar Ahora
-            </button>
-            </div>
-
-
-    <!-- Proyectos Relacionados -->
-    <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-10 shadow-xl card-hover border border-rose-100/40 relative overflow-hidden animate-card-enter">
-        <!-- Línea superior -->
-        <div class="absolute top-0 left-0 w-full h-px
-                    bg-gradient-to-r from-transparent via-rose-200/70 to-transparent"></div>
-
-        <!-- Título -->
-        <div class="flex items-center gap-2 mb-6">
-            <span class="text-gray-300">•</span>
-            <h3 class="text-2xl font-bold text-gray-800">Proyectos Relacionados</h3>
-            <span class="text-gray-300">•</span>
+          </div>
         </div>
 
-        <!-- Lista -->
-        <div class="space-y-3">
-            <!-- Dashboard -->
-            <button onclick="showProjectDetail('dashboard')" 
-                    class="w-full text-left p-4 rounded-2xl border border-gray-100 bg-gray-50/60 
-                        hover:bg-rose-50/60 transition">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 
-                            flex items-center justify-center">
-                <!-- Icono gráfico -->
-                <svg class="w-5 h-5 text-gray-500 group-hover:text-rose-500 transition-colors"
-                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M11 11V7a4 4 0 118 0v4m-9 4h10a2 2 0 012 2v3H4v-3a2 2 0 012-2h6z"/>
-                </svg>
+        <!-- Ventana de confirmación -->
+        <div *ngIf="sent"
+          class="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-2xl border border-rose-200 bg-white shadow-lg px-5 py-3 animate-fade-in-up">
+          <div class="h-3 w-3 rounded-full bg-rose-400 animate-pulse"></div>
+          <div>
+            <p class="font-semibold text-rose-600">¡Mensaje enviado!</p>
+            <p class="text-sm text-slate-600">Gracias por tu mensaje 😊<br>Te responderé lo antes posible.</p>
+          </div>
+        </div>
+
+
+        <!-- Proyectos Relacionados -->
+        <div *ngIf="relatedProjects.length"
+          class="bg-white/80 backdrop-blur-sm rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10 shadow-xl card-hover border border-rose-100/40 relative overflow-hidden animate-card-enter">
+
+          <!-- Título -->
+          <div class="flex items-center gap-2 mb-6">
+            <h3 class="text-2xl font-bold text-gray-800"><span class="text-rose-400 opacity-70">•</span> Proyectos Relacionados <span class="text-rose-400 opacity-70">•</span></h3>
+            
+          </div>
+
+          <!-- Lista -->
+          <div class="space-y-3">
+            <button *ngFor="let r of relatedProjects" type="button" (click)="openProject(r.id)"
+              class="group w-full text-left p-4 rounded-2xl border border-gray-100 bg-gray-50/60 hover:bg-rose-50/60 transition">
+
+              <div class="flex items-center gap-4">
+                <div class="shrink-0 w-14 h-14 rounded-full overflow-hidden ring-1 ring-rose-100/60 bg-white">
+                  <img [src]="r.info.icon || r.info.gallery[0].src" [alt]="r.info.title"
+                    class="w-full h-full object-cover" />
                 </div>
+
                 <div>
-                <div class="font-semibold text-gray-800 hover:text-rose-600 transition-colors">
-                    Dashboard Analytics
+                  <div class="font-semibold text-gray-800 group-hover:text-rose-600 transition-colors">
+                    {{ r.info.title }}
+                  </div>
+                  <div class="text-sm text-gray-500">
+                    {{ r.info.subtitle }}
+                  </div>
                 </div>
-                <div class="text-sm text-gray-500">Análisis de datos</div>
-                </div>
-            </div>
+              </div>
             </button>
-
-            <!-- CRM -->
-            <button onclick="showProjectDetail('crm')" 
-                    class="w-full text-left p-4 rounded-2xl border border-gray-100 bg-gray-50/60 
-                        hover:bg-rose-50/60 transition">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 
-                            flex items-center justify-center">
-                <!-- Icono contactos -->
-                <svg class="w-5 h-5 text-gray-500 group-hover:text-rose-500 transition-colors"
-                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M5.121 17.804A9 9 0 1117.804 5.121a9 9 0 01-12.683 12.683z"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                </svg>
-                </div>
-                <div>
-                <div class="font-semibold text-gray-800 hover:text-rose-600 transition-colors">
-                    Sistema CRM
-                </div>
-                <div class="text-sm text-gray-500">Gestión empresarial</div>
-                </div>
-            </div>
-            </button>
+          </div>
         </div>
-        </div>
-
-
-        <!-- Puedes añadir aquí más secciones si quieres -->
       </div>
     </div>
   </div>
