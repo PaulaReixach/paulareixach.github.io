@@ -1,0 +1,88 @@
+:host-context(.dark) #about {
+  background:
+    radial-gradient(1000px 520px at 25% 10%, rgba(192, 132, 252, 0.12) 0%, transparent 60%),
+    radial-gradient(760px 460px at 85% 0%, rgba(249, 168, 212, 0.10) 0%, transparent 70%),
+    linear-gradient(180deg, #1a1527 0%, #130f1e 100%);
+}
+
+:host-context(.dark) #about h2 {
+  background: linear-gradient(135deg, #fda4af, #c084fc) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .35));
+}
+
+:host-context(.dark) #about .text-center p {
+  color: #CFC9DC;
+}
+
+:host-context(.dark) #about h2+span {
+  background: rgba(192, 132, 252, 0.35) !important;
+}
+
+
+:host-context(.dark) #about .group>div.w-80.h-80 {
+  background: linear-gradient(135deg, rgba(192, 132, 252, 0.35), rgba(249, 168, 212, 0.25)) !important;
+  box-shadow: 0 18px 40px rgba(192, 132, 252, 0.18);
+}
+
+
+:host-context(.dark) #about .group .absolute {
+  background: rgba(192, 132, 252, 0.22) !important;
+  opacity: .25 !important;
+}
+
+
+:host-context(.dark) #about .grid.grid-cols-3>div {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(224, 190, 255, 0.20) !important;
+  box-shadow: 0 10px 26px rgba(192, 132, 252, 0.16);
+}
+
+:host-context(.dark) #about .grid.grid-cols-3>div h3 {
+  background: linear-gradient(135deg, #fda4af, #d8b4fe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+:host-context(.dark) #about .grid.grid-cols-3>div p {
+  color: #D7D0E4;
+}
+
+
+:host-context(.dark) #about .lg\:w-2\/3>div.bg-white {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(224, 190, 255, 0.20);
+  box-shadow: 0 20px 50px rgba(192, 132, 252, 0.18);
+}
+
+:host-context(.dark) #about .lg\:w-2\/3>div .text-lg {
+  color: #DAD0E8;
+}
+
+:host-context(.dark) #about .lg\:w-2\/3>div .text-lg .text-rose-600 {
+  color: #FDA4AF;
+}
+
+:host-context(.dark) #about .lg\:w-2\/3>div .text-lg .text-purple-600 {
+  color: #D8B4FE;
+}
+
+
+:host-context(.dark) #about .flex.flex-wrap.gap-3 span {
+  background: rgba(192, 132, 252, 0.12) !important;
+  color: #EADAFF !important;
+  border: 1px solid rgba(224, 190, 255, 0.20);
+  box-shadow: 0 8px 20px rgba(192, 132, 252, 0.14);
+}
+
+:host-context(.dark) #about .flex.flex-wrap.gap-3 span:hover {
+  background: rgba(192, 132, 252, 0.18) !important;
+}
+
+
+:host-context(.dark) #about img[alt="profile-pic"] {
+  filter: saturate(1.02) contrast(1.02);
+}

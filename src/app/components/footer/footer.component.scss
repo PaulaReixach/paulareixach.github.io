@@ -1,0 +1,31 @@
+footer {
+  background: linear-gradient(180deg, #fff 0%, #fdf2f8 100%);
+  color: #374151;
+  border-top: 1px solid rgba(244, 114, 182, 0.2);
+  transition: all 0.4s ease;
+}
+
+footer p {
+  color: #6b7280;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+}
+
+:host-context(.dark) footer {
+  background: linear-gradient(180deg, #1a1527 0%, #130f1e 100%);
+  border-top: 1px solid rgba(224, 190, 255, 0.25);
+  box-shadow: 0 -10px 30px rgba(192, 132, 252, 0.15);
+  color: #e8defc;
+}
+
+:host-context(.dark) footer p {
+  color: #cfc9dc;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+}
+
+
+:host-context(.dark) footer a:hover {
+  color: #fda4af;
+  transition: color 0.3s ease;
+}

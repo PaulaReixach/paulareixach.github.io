@@ -1,0 +1,97 @@
+/* ===== Navbar base ===== */
+.navbar-feminine {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(248, 180, 217, 0.25);
+    box-shadow: 0 6px 24px rgba(236, 72, 153, 0.06);
+    transition: all 0.4s ease;
+}
+
+.navbar-feminine a {
+    font-weight: 500;
+    color: #374151;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navbar-feminine a:hover {
+    color: #fb7185;
+}
+
+:host-context(.dark) .navbar-feminine {
+    background: rgba(26, 21, 39, 0.92);
+    border-bottom: 1px solid rgba(192, 132, 252, 0.28);
+    box-shadow: 0 10px 30px rgba(192, 132, 252, 0.12);
+}
+
+:host-context(.dark) .navbar-feminine a {
+    color: #EDEAF6;
+    opacity: 0.95;
+}
+
+:host-context(.dark) .navbar-feminine a:hover {
+    color: #F9A8D4;
+    opacity: 1;
+}
+
+:host-context(.dark) .navbar-feminine svg {
+    color: #EDEAF6;
+    opacity: 0.9;
+}
+
+:host-context(.dark) .navbar-feminine a:hover svg {
+    color: #F9A8D4;
+    opacity: 1;
+}
+
+.navbar-feminine .group>.absolute {
+    background: #fff;
+    border: 1px solid rgba(251, 207, 232, 0.6);
+    box-shadow: 0 8px 30px rgba(236, 72, 153, 0.1);
+    transition: all 0.3s ease;
+}
+
+:host-context(.dark) .navbar-feminine .group>.absolute {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(224, 190, 255, 0.2);
+    box-shadow: 0 12px 36px rgba(192, 132, 252, 0.14);
+}
+
+:host-context(.dark) .navbar-feminine .group>.absolute button {
+    color: #EDEAF6;
+}
+
+:host-context(.dark) .navbar-feminine .group>.absolute button:hover {
+    color: #F9A8D4;
+    background: rgba(192, 132, 252, 0.1);
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #fb7185, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+:host-context(.dark) .gradient-text {
+    background: linear-gradient(135deg, #fda4af, #d8b4fe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.35));
+}
+
+label {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+span {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+:host-context(.dark) span {
+    color: #e5e7eb;
+}

@@ -5,4 +5,12 @@
     <router-outlet></router-outlet>
   </div>
   <app-footer></app-footer>
+
+  <div class="theme-toggle fixed bottom-6 left-6 z-50">
+    <mat-slide-toggle [checked]="isDark" (change)="onThemeToggle($event.checked)" labelPosition="after" color=""
+      aria-label="Cambiar tema oscuro" class="mat-density-compact">
+      <span [style.color]="isDark ? '#EDEAF6' : '#374151'">Modo oscuro</span>
+    </mat-slide-toggle>
+  </div>
+
 </body>
