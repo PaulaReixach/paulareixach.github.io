@@ -18,7 +18,7 @@
 
   <div class="max-w-6xl mx-auto relative z-10">
     <!-- Cabecera y botón de volver atrás -->
-    <div class="flex items-center justify-between mb-12 animate-slide-in-up">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 mb-8 sm:mb-10 animate-slide-in-up">
       <button (click)="goBack()"
         class="group flex items-center gap-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full text-rose-600 hover:text-rose-700 font-medium transition duration-300 shadow-lg hover:shadow-xl hover:scale-105 animate-shimmer">
         <svg class="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor"
@@ -38,8 +38,10 @@
         <img [src]="projectData.icon" [alt]="projectData.title"
           class="w-full h-full object-cover rounded-full transition duration-500 group-hover:scale-110" />
       </div>
-      <h1 class="text-5xl font-bold gradient-text mb-4">{{ projectData.title }}</h1>
-      <p class="text-lg text-gray-600">{{ projectData.subtitle }}</p>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text mb-3 sm:mb-4 break-words">
+        {{ projectData.title }}
+      </h1>
+      <p class="text-base sm:text-lg text-gray-600">{{ projectData.subtitle }}</p>
     </div>
 
     <!-- Contenido -->
@@ -52,7 +54,15 @@
 
           <!-- Primer bloque -->
           <div class="mb-6 sm:mb-8">
-            <div class="flex gap-6 overflow-x-auto no-scrollbar justify-center text-sm sm:text-base font-semibold">
+<div
+  class="flex items-center gap-3 sm:gap-4
+         overflow-x-auto no-scrollbar
+         px-0 sm:px-0 py-1
+         justify-start sm:justify-center
+         text-sm sm:text-base font-semibold
+         whitespace-nowrap
+         snap-x snap-mandatory scroll-smooth">
+
               <button (click)="setActiveTab('descripcion')" class="relative pb-2 sm:pb-3 px-2"
                 [class.text-rose-500]="activeTab === 'descripcion'">
                 Descripción
