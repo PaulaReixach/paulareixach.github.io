@@ -1,15 +1,143 @@
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+:host-context(.dark) #contacto {
+  background:
+    radial-gradient(1000px 520px at 30% 10%, rgba(192, 132, 252, 0.12) 0%, transparent 60%),
+    radial-gradient(760px 460px at 85% 0%, rgba(249, 168, 212, 0.10) 0%, transparent 70%),
+    linear-gradient(180deg, #1a1527 0%, #130f1e 100%);
 }
 
-.animate-fade-in-up {
-  animation: fade-in-up 0.4s ease-out forwards;
+
+:host-context(.dark) #contacto h2 {
+  background: linear-gradient(135deg, #fda4af, #c084fc) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .35));
+}
+
+:host-context(.dark) #contacto h2+span {
+  background: rgba(192, 132, 252, 0.45) !important;
+}
+
+:host-context(.dark) #contacto>.max-w-4xl>p {
+  color: #CFC9DC;
+}
+
+
+:host-context(.dark) #contacto .bg-white\/90 {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-color: rgba(224, 190, 255, 0.22) !important;
+  box-shadow: 0 16px 40px rgba(192, 132, 252, 0.18);
+}
+
+:host-context(.dark) #contacto .bg-white\/90:hover {
+  box-shadow: 0 20px 52px rgba(192, 132, 252, 0.26);
+  transform: translateY(-2px);
+}
+
+
+:host-context(.dark) #contacto label {
+  color: #EDEAF6;
+}
+
+:host-context(.dark) #contacto label .text-rose-500 {
+  color: #F9A8D4;
+}
+
+:host-context(.dark) #contacto input,
+:host-context(.dark) #contacto textarea {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: #F3E8FF !important;
+  border: 1px solid rgba(224, 190, 255, 0.25) !important;
+}
+
+:host-context(.dark) #contacto input::placeholder,
+:host-context(.dark) #contacto textarea::placeholder {
+  color: #CFC9DC;
+}
+
+:host-context(.dark) #contacto input:focus,
+:host-context(.dark) #contacto textarea:focus {
+  outline: none;
+  border-color: rgba(249, 168, 212, 0.55) !important;
+  box-shadow: 0 0 0 3px rgba(249, 168, 212, 0.25);
+}
+
+
+:host-context(.dark) #contacto .text-rose-600 {
+  color: #FDA4AF !important;
+}
+
+
+:host-context(.dark) #contacto button[type="submit"] {
+  background: linear-gradient(135deg, #fda4af, #c084fc) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(224, 190, 255, 0.22);
+  box-shadow: 0 10px 26px rgba(192, 132, 252, 0.22);
+}
+
+:host-context(.dark) #contacto button[type="submit"]:hover:not(:disabled) {
+  filter: brightness(0.98);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 34px rgba(192, 132, 252, 0.30);
+}
+
+:host-context(.dark) #contacto button[type="submit"]:disabled {
+  opacity: .6;
+}
+
+
+:host-context(.dark) #contacto a[download] {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: #EADAFF !important;
+  border-color: rgba(224, 190, 255, 0.28) !important;
+}
+
+:host-context(.dark) #contacto a[download]:hover {
+  background: rgba(192, 132, 252, 0.14) !important;
+  color: #ffffff !important;
+}
+
+:host-context(.dark) #contacto .mt-10 {
+  color: #DAD0E8;
+}
+
+:host-context(.dark) #contacto .mt-10 svg {
+  color: #D8B4FE;
+}
+
+:host-context(.dark) #contacto .mt-10 a:hover {
+  color: #F9A8D4;
+}
+
+
+:host-context(.dark) #contacto .fixed.bottom-6.right-6 {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-color: rgba(224, 190, 255, 0.25) !important;
+  box-shadow: 0 16px 36px rgba(192, 132, 252, 0.20);
+}
+
+:host-context(.dark) #contacto .fixed.bottom-6.right-6 .text-rose-600 {
+  color: #FDA4AF !important;
+}
+
+:host-context(.dark) #contacto .fixed.bottom-6.right-6 .text-slate-600 {
+  color: #E2D9F5 !important;
+}
+
+:host-context(.dark) #contacto .fixed.bottom-6.right-6 .bg-rose-400 {
+  background: #F9A8D4 !important;
+}
+
+
+:host-context(.dark) #contacto *,
+:host-context(.dark) #contacto input,
+:host-context(.dark) #contacto textarea {
+  transition: background-color .35s ease, color .35s ease, border-color .35s ease, box-shadow .35s ease, filter .35s ease, transform .2s ease;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  :host-context(.dark) #contacto .bg-white\/90:hover {
+    transform: none;
+  }
 }

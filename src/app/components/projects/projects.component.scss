@@ -57,3 +57,94 @@
     width: 4rem;
   }
 }
+
+:host-context(.dark) #proyectos {
+  background:
+    radial-gradient(1000px 520px at 25% 10%, rgba(192, 132, 252, 0.12) 0%, transparent 60%),
+    radial-gradient(760px 460px at 85% 0%, rgba(249, 168, 212, 0.10) 0%, transparent 70%),
+    linear-gradient(180deg, #1a1527 0%, #130f1e 100%);
+}
+
+
+:host-context(.dark) #proyectos h2 {
+  background: linear-gradient(135deg, #fda4af, #c084fc) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .35));
+}
+
+:host-context(.dark) #proyectos .text-center p {
+  color: #CFC9DC;
+}
+
+:host-context(.dark) #proyectos .underline-grow .u-bar {
+  background-color: rgba(192, 132, 252, 0.45);
+}
+
+:host-context(.dark) #proyectos .group {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(224, 190, 255, 0.20);
+  box-shadow: 0 14px 36px rgba(192, 132, 252, 0.16);
+}
+
+
+:host-context(.dark) #proyectos .group h3 {
+  color: #EDEAF6 !important;
+}
+
+:host-context(.dark) #proyectos .group h3:hover {
+  color: #F9A8D4 !important;
+}
+
+:host-context(.dark) #proyectos .group p {
+  color: #DAD0E8 !important;
+}
+
+:host-context(.dark) #proyectos .group p .text-rose-500,
+:host-context(.dark) #proyectos .group p .text-pink-500,
+:host-context(.dark) #proyectos .group p .text-violet-500,
+:host-context(.dark) #proyectos .group p .text-purple-500,
+:host-context(.dark) #proyectos .group p .text-indigo-500,
+:host-context(.dark) #proyectos .group p .text-orange-500,
+:host-context(.dark) #proyectos .group p .text-amber-500 {
+  color: #fda4af !important;
+}
+
+:host-context(.dark) #proyectos .group .flex.flex-wrap.gap-2 span {
+  background: rgba(192, 132, 252, 0.12) !important;
+  color: #EADAFF !important;
+  border: 1px solid rgba(224, 190, 255, 0.20);
+  box-shadow: 0 6px 18px rgba(192, 132, 252, 0.14);
+}
+
+
+:host-context(.dark) #proyectos .group .relative .absolute {
+  background: linear-gradient(to top, rgba(192, 132, 252, 0.35), rgba(249, 168, 212, 0.18), transparent) !important;
+  opacity: 0.85 !important;
+}
+
+
+:host-context(.dark) #proyectos .group button {
+  background: linear-gradient(135deg, #fda4af, #c084fc) !important;
+  color: #fff !important;
+  box-shadow: 0 10px 26px rgba(192, 132, 252, 0.22);
+  border: 1px solid rgba(224, 190, 255, 0.20);
+}
+
+:host-context(.dark) #proyectos .group button:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 14px 32px rgba(192, 132, 252, 0.32);
+}
+
+
+:host-context(.dark) #proyectos .group:hover {
+  box-shadow: 0 18px 44px rgba(192, 132, 252, 0.26);
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  :host-context(.dark) #proyectos .group button:hover {
+    transform: none;
+  }
+}
