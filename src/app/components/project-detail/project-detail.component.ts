@@ -62,6 +62,93 @@ export class ProjectDetailComponent implements OnInit {
   activeTab: string = 'descripcion';
 
   projectsInfo: { [key: string]: ProjectInfo } = {
+    habittracker: {
+      title: 'Habit Tracker',
+      subtitle: 'Aplicación de seguimiento de hábitos con rachas, calendario y estadísticas',
+      description: `
+      Habit Tracker es una aplicación web desarrollada como proyecto personal de aprendizaje en React.
+      <br><br>
+      El objetivo del proyecto ha sido practicar conceptos fundamentales del desarrollo frontend construyendo una aplicación real desde cero, permitiendo al usuario crear hábitos, marcar su progreso diario y visualizar su evolución en una interfaz clara e intuitiva.
+      <br><br>
+      La aplicación incluye gestión de estado global con Context API, persistencia de datos con localStorage, cálculo de rachas, filtrado y búsqueda de hábitos, además de una página de estadísticas y un calendario mensual interactivo para visualizar los días completados.
+      <br><br>
+      También se trabajó la experiencia de usuario mediante componentes reutilizables, modales de confirmación, microinteracciones y una interfaz cuidada con CSS Modules y Lucide React.`,
+      related: ['portfolio', 'pawsupport', 'elasticadoptions'],
+      technologies: ['React', 'Vite', 'Context API', 'CSS Modules', 'Lucide React', 'localStorage'],
+      state: 'Completado',
+      year: 2026,
+      type: 'Desarrollo Frontend',
+      duration: '2-3 semanas',
+      features: [
+        'Creación, edición y eliminación de hábitos',
+        'Marcado de hábitos como completados hoy o ayer',
+        'Cálculo automático de rachas actuales',
+        'Filtrado y búsqueda de hábitos en tiempo real',
+        'Calendario mensual interactivo para visualizar el progreso por días',
+        'Página de estadísticas con mejor racha y ranking de hábitos',
+        'Persistencia de datos en localStorage',
+        'Uso de iconos SVG con Lucide React y estilos modulares con CSS Modules'
+      ],
+      challenges: [
+        'Gestionar correctamente la lógica de fechas para evitar errores con zonas horarias.',
+        'Diseñar un calendario mensual que mostrara los hábitos completados por día de forma clara y visual.',
+        'Organizar el proyecto en componentes reutilizables sin perder claridad en la lógica.',
+        'Controlar modales y confirmaciones de forma reutilizable mediante custom hooks.'
+      ],
+      results: [
+        'Se desarrolló una aplicación funcional y visualmente cuidada para el seguimiento de hábitos.',
+        'El proyecto permitió consolidar conceptos clave de React como estado, contexto, hooks personalizados y composición de componentes.',
+        'Se consiguió una experiencia de usuario clara, intuitiva y persistente en navegador sin necesidad de backend.',
+        'El proyecto fue publicado como demo y compartido en LinkedIn como parte del proceso de aprendizaje en React.'
+      ],
+      icon: 'assets/images/projects/habittracker/portada.png',
+      gallery: [
+        {
+          src: 'assets/images/projects/habittracker/portada.png',
+          title: 'Vista principal',
+          desc: 'Pantalla principal del Habit Tracker',
+          alt: 'Captura de pantalla de la vista principal del proyecto Habit Tracker'
+        },
+        {
+          src: 'assets/images/projects/habittracker/calendar.png',
+          title: 'Calendario mensual',
+          desc: 'Vista mensual con hábitos completados por día',
+          alt: 'Captura de pantalla del calendario mensual del Habit Tracker'
+        },
+        {
+          src: 'assets/images/projects/habittracker/minicalendar.png',
+          title: 'Mini calendario',
+          desc: 'Mini calendario para marcar hábitos completados en el día actual',
+          alt: 'Captura de pantalla del mini calendario del Habit Tracker'
+        },
+        {
+          src: 'assets/images/projects/habittracker/stats.png',
+          title: 'Estadísticas',
+          desc: 'Resumen de hábitos y mejores rachas',
+          alt: 'Captura de pantalla de la página de estadísticas del Habit Tracker'
+        },
+        {
+          src: 'assets/images/projects/habittracker/diario.png',
+          title: 'Detalle diario',
+          desc: 'Modal con hábitos completados en una fecha concreta',
+          alt: 'Captura de pantalla del modal de hábitos completados por día'
+        },
+        {
+          src: 'assets/images/projects/habittracker/settings.png',
+          title: 'Configuración',
+          desc: 'Pantalla de configuración de hábitos',
+          alt: 'Captura de pantalla de la pantalla de configuración del Habit Tracker'
+        },
+      ],
+      colorClasses: {
+        primary: 'blue-500',
+        primaryHover: 'blue-600',
+        light: 'sky-100',
+        text: 'blue-700',
+        bg: 'blue-50', 
+      },
+    },
+    
     elasticadoptions: {
       title: 'ElasticAdoptions',
       subtitle: 'Sistema de adopción de animales con búsqueda avanzada (Elasticsearch)',
@@ -70,7 +157,7 @@ export class ProjectDetailComponent implements OnInit {
       <br> <br> El proyecto tiene como objetivo ofrecer una experiencia rápida, intuitiva y eficiente a los usuarios que deseen encontrar su mascota ideal, permitiendo filtrar y buscar por múltiples criterios como animal, pelaje, color, raza, si tiene alguna enfermedad, tamaño y edad, además de contar con búsqueda de texto completo. 
       <br> <br> El sistema ha sido desarrollado en equipo utilizando Angular para el frontend y Node.js para el backend, con la comunicación entre ambos gestionada mediante API REST.
       <br> La infraestructura del proyecto se gestiona con Docker y control de versiones en GitHub, garantizando un entorno colaborativo y organizado.`,
-      related: ['pawsupport', 'portfolio'],
+      related: ['pawsupport', 'portfolio', 'habittracker'],
       technologies: ['Angular', 'Node.js', 'Elasticsearch', 'Docker', 'Figma'],
       state: 'Completado',
       year: 2023,
@@ -147,7 +234,7 @@ export class ProjectDetailComponent implements OnInit {
           <br><br> La iniciativa busca mejorar la calidad de vida tanto de las personas con limitaciones motrices o cognitivas como de sus mascotas, fomentando la solidaridad, la inclusión y el bienestar animal.
           <br> El proyecto se desarrolló íntegramente de forma autónoma, aplicando metodologías de gestión ágiles y herramientas modernas para garantizar una experiencia funcional,
           segura y accesible para todos los usuarios.`,
-      related: ['elasticadoptions', 'portfolio'],
+      related: ['elasticadoptions', 'portfolio', 'habittracker'],
       technologies: ['Angular', 'Node.js', 'PostgreSQL', 'Elasticsearch', 'Firebase', 'Docker'],
       state: 'Completado',
       year: 2024,
@@ -271,7 +358,7 @@ export class ProjectDetailComponent implements OnInit {
       description:
         `Portfolio web desarrollado con Angular y TailwindCSS para mostrar mi trayectoria, habilidades y proyectos. 
       <br>Incluye secciones de presentación personal, habilidades técnicas y metodológicas, proyectos destacados y un formulario de contacto interactivo.`,
-      related: ['pawsupport', 'elasticadoptions'],
+      related: ['pawsupport', 'elasticadoptions', 'habittracker'],
       technologies: ['Angular', 'TailwindCSS', 'TypeScript', 'HTML5', 'SCSS'],
       state: 'Completado',
       year: 2025,
